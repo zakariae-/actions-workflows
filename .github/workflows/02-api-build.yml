@@ -27,6 +27,10 @@ jobs:
         - name: Build API
           run: dotnet build --configuration Release
           working-directory: ./api
+          with:
+            # cache: 'dotnet'
+            # cache-dependency-path: ./api/**/*.csproj
+            go-version: '10.0.204'
 
         - name: Test API
           run: dotnet test --configuration Release
