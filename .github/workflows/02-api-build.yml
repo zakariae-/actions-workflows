@@ -24,3 +24,6 @@ jobs:
         - name: Build API
           run: dotnet build --configuration Release
           working-directory: ./api
+        - name: Test API
+          run: dotnet test --configuration Release
+          working-directory: ./api
