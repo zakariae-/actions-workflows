@@ -21,6 +21,9 @@ jobs:
         - name: Check .NET SDKs
           run: dotnet --list-sdks
 
+        - run: dotnet version
+          name: Check .NET Version
+          
         - name: Build API
           run: dotnet build --configuration Release
           working-directory: ./api
