@@ -37,4 +37,4 @@ jobs:
           name: List Workflows
 
         - run: gh api /repos/:owner/:repo/actions/workflows
-          name: List Issues via API
+          name: List Workflows via API
