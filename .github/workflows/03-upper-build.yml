@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - ".github/workflows/upper-build.yml"
+      - ".github/workflows/03-upper-build.yml"
       - "upper/**"
   workflow_dispatch: # manual
 
