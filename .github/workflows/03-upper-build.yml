@@ -1,0 +1,41 @@
+name: Upper Build
+
+on:
+  push:
+    paths:
+      - ".github/workflows/upper-build.yml"
+      - "upper/**"
+  workflow_dispatch: # manual
+
+jobs:
+    build:
+        name: Build Upper
+        runs-on: ubuntu-latest
+        steps:
+        - run: pwd && ls -al
+          name: Print Working Directory and List Files
+       
+        - uses: actions/checkout@v4
+          name: Checkout Repository
+        
+        - run: go version
+          name: Check Go Version
+        
+        - name: Setup Go
+          uses: actions/setup-go@v5
+          with:
+            # go-version: '1.22'
+            go-version-file: ./upper/go.mod
+            cache-dependency-path: ./upper/go.sum
+
+        - name: Download Dependencies
+          run: go mod download
+          working-directory: upper
+
+        - name: Build and Test
+          run: |
+              ls
+              go build
+              ls
+              go test
+          working-directory: upper
