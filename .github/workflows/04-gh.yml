@@ -36,5 +36,5 @@ jobs:
         - run: gh workflow list
           name: List Workflows
 
-        - run: gh api /repo/:owner/:repo/:issues/worflows
+        - run: gh api /repo/:owner/:repo/actions/workflows
           name: List Issues via API
