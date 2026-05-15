@@ -20,7 +20,7 @@ jobs:
           name: Checkout Repository
         
         - run: pwd && ls -al
-          name: Print Working Directory and List Files
+          name: Print Working Directory and List Files After Checkout
         
         - run: go version
           name: Check Go Version
@@ -31,6 +31,9 @@ jobs:
             # go-version: '1.22'
             go-version-file: ./upper/go.mod
             cache-dependency-path: ./upper/go.sum
+
+        - run: go version
+          name: Check Go Version After Setup
 
         - name: Download Dependencies
           run: go mod download
