@@ -1,0 +1,40 @@
+name: gh 
+
+on:
+  push:
+    branches: [ main ]
+    paths: 
+      - '.github/workflows/04-gh.yml'
+      - 'gh/**'
+  workflow_dispatch:
+
+jobs:
+    build:
+        name: Build GH
+        runs-on: ubuntu-latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        steps:
+        - run: actions/checkout@v4
+          name: Checkout Repository
+        
+        - run: env
+          name: Print Environment Variables
+        
+        - run: gh --version
+          name: Check GH CLI Version
+        
+        - run: gh auth status
+          name: Check GH CLI Authentication Status
+        
+        - run: gh repo list
+          name: List Repositories
+        
+        - run: gh issue list
+          name: List Issues
+
+        - run: gh workflow list
+          name: List Workflows
+
+        - run: gh api /repo/:owner/:repo/:issues/worflows
+          name: List Issues via API
