@@ -45,4 +45,5 @@ jobs:
               go build
               ls
               go test
+              ./upper demo texte upper 
           working-directory: upper
