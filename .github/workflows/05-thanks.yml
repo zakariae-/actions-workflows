@@ -22,6 +22,7 @@ jobs:
                 var issue_number = context.issue.number || 3;
                 var repo = context.repo.repo;
                 var owner = context.repo.owner;
+
                 console.log(`issue_number: ${issue_number}`);
                 console.log(`owner: ${owner}`);
                 console.log(`repo: ${repo}`);
@@ -30,7 +31,6 @@ jobs:
                     repo, owner, issue_number
                 });
                 console.log(`issue: ${issue}`);
-
 
                 var comment = await github.rest.issues.createComment({
                 issue_number: issue_number,
