@@ -30,7 +30,7 @@ jobs:
                 const issue = await github.rest.issues.get({
                     repo, owner, issue_number
                 });
-                console.log(`issue: toJson(${issue})`);
+                console.log(`issue: ${JSON.stringify(issue)}`);
 
                 var comment = await github.rest.issues.createComment({
                 issue_number: issue_number,
