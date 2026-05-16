@@ -20,9 +20,11 @@ jobs:
           with:
             script: |
                 var issue_number = context.issue.number || 3;
+                var repo = context.repo.repo;
+                var owner = context.repo.owner;
                 console.log(`issue_number: ${issue_number}`);
-                console.log(`owner: ${context.repo.owner}`);
-                console.log(`repo: ${context.repo.repo}`);
+                console.log(`owner: ${owner}`);
+                console.log(`repo: ${repo}`);
 
                 const issue = await github.rest.issues.get({
                     repo, owner, issue_number
@@ -31,16 +33,16 @@ jobs:
 
 
                 var comment = await github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: `👋 Thanks for opening issue #${context.issue.number}!`
+                issue_number: issue_number,
+                owner: owner,
+                repo: repo,
+                body: `👋 Thanks for opening issue #${issue_number}!`
                 });
 
                 github.rest.issues.addLabels({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
+                issue_number: issue_number,
+                owner: owner,
+                repo: repo,
                 labels: ['triage']
                 });
 
