@@ -19,6 +19,7 @@ jobs:
           id: issue_comment
           with:
             script: |
+                var issue_number = context.issue.number;
                 console.log(`issue_number: ${issue_number}`);
                 console.log(`owner: ${context.repo.owner}`);
                 console.log(`repo: ${context.repo.repo}`);
