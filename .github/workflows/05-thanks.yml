@@ -23,7 +23,7 @@ jobs:
                 var repo = context.repo.repo;
                 var owner = context.repo.owner;
 
-                console.log(`issue_number: ${JSON.stringify(issue_number)}`);
+                console.log(`issue_number: toJson(${issue_number})`);
                 console.log(`owner: ${owner}`);
                 console.log(`repo: ${repo}`);
 
