@@ -23,14 +23,14 @@ jobs:
                 var repo = context.repo.repo;
                 var owner = context.repo.owner;
 
-                console.log(`issue_number: toJson(${issue_number})`);
+                console.log(`issue_number: ${issue_number}`);
                 console.log(`owner: ${owner}`);
                 console.log(`repo: ${repo}`);
 
                 const issue = await github.rest.issues.get({
                     repo, owner, issue_number
                 });
-                console.log(`issue: ${issue}`);
+                console.log(`issue: toJson(${issue})`);
 
                 var comment = await github.rest.issues.createComment({
                 issue_number: issue_number,
