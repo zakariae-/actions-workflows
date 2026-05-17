@@ -1,0 +1,42 @@
+name: upper capture
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - ".github/workflows/06-upper-capture.yml"
+      - "upper/**"
+  workflow_dispatch: # manual
+
+jobs:
+    build:
+        name: Capture Upper Build
+        runs-on: ubuntu-latest
+        defaults:
+          run:
+            working-directory: upper
+        steps:
+        - run: pwd && ls -al
+          name: Print Working Directory and List Files
+
+        - uses: actions/checkout@v6
+          name: Checkout Repository
+
+        - uses: actions/setup-go@v6
+          with:
+            go-version: '1.22'
+            cache-dependency-path: ./upper/go.sum
+        
+        - run: ls -al
+          name: List Files Before Build
+
+        - run: go build
+          name: Build Upper
+        
+        - run: ls -al
+          name: List Files After Build
+
+        - run: go test
+          name: Test Upper
+        
+        
