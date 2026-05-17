@@ -16,11 +16,11 @@ jobs:
           run:
             working-directory: upper
         steps:
-        - run: pwd && ls -al
-          name: Print Working Directory and List Files
-
         - uses: actions/checkout@v6
           name: Checkout Repository
+          
+        - run: pwd && ls -al
+          name: Print Working Directory and List Files
 
         - uses: actions/setup-go@v6
           with:
