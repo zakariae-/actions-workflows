@@ -11,7 +11,7 @@ on:
 jobs:
     build:
         name: Capture Upper Build
-        runs-on: ubuntu-latest
+        runs-on: [ ubuntu-latest, windows-latest, macos-latest ]
         defaults:
           run:
             working-directory: upper
@@ -42,7 +42,7 @@ jobs:
         - uses: actions/upload-artifact@v7
           name: Upload Upper Build Artifacts
           with:
-            name: upper-build-artifacts
+            name: upper-build-${{ runner.os }}
             path: ./upper/upper*
         
         
