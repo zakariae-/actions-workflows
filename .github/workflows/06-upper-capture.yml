@@ -39,7 +39,7 @@ jobs:
         - run: go test
           name: Test Upper
 
-        - uses: actions/upload-artifact@v3
+        - uses: actions/upload-artifact@v7
           with:
             name: upper-build-artifacts
             path: ./upper/upper
