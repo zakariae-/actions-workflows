@@ -38,5 +38,10 @@ jobs:
 
         - run: go test
           name: Test Upper
+
+        - uses: actions/upload-artifact@v3
+          with:
+            name: upper-build-artifacts
+            path: ./upper/upper
         
         
